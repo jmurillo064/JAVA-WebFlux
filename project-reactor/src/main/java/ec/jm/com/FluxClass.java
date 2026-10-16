@@ -2,14 +2,16 @@ package ec.jm.com;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
+import reactor.core.publisher.Flux;
 
-public class Flux {
+public class FluxClass {
 
     public static void main(String[] args) {
 
-        reactor.core.publisher.Flux<Integer> flux = reactor.core.publisher.Flux.just(1, 2, 3, 4, 5);
+        Flux<Integer> flux = Flux.just(1, 2, 3, 4, 5);
 
         Subscriber<Integer> integerSubscriber = new Subscriber<Integer>() {
+
             @Override
             public void onSubscribe(Subscription s) {
                 System.out.println("Suscrito al publicador");
@@ -30,6 +32,7 @@ public class Flux {
             public void onComplete() {
                 System.out.println("Completado");
             }
+
         };
 
         flux.subscribe(integerSubscriber);
